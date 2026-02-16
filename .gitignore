@@ -1,0 +1,4 @@
+.env
+python-for-ai.code-workspace
+venv/
+__pycache__
