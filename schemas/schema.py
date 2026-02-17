@@ -1,5 +1,10 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import List, Optional
+
+class AuditReport(BaseModel):  # ← Wrapper for multiple
+    audit_results: List[AuditResult] = Field(..., description="List of ALL reviewed transactions")
+    summary: str = Field(..., description="Overall audit findings")
+    total_reviewed: int = Field(..., description="Total transactions checked")
 
 class AuditResult(BaseModel):
     transaction_id: str = Field(..., description="Must match the input transaction_id")
